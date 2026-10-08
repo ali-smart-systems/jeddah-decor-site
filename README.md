@@ -14,7 +14,9 @@ npm run dev
 2. في Vercel اختر Add New Project ثم Import للمستودع.
 3. اترك Framework Preset على Next.js واضغط Deploy.
 4. بعد شراء الدومين: من Project Settings > Domains أضف الدومين واتبع تعليمات DNS التي تظهر لك.
-5. أضف متغير البيئة `NEXT_PUBLIC_SITE_URL` بقيمة `https://yourdomain.com` ثم أعد النشر لتحديث روابط الموقع و sitemap والبيانات المنظمة. أثناء النشر الأول سيُستخدم رابط Vercel تلقائيًا.
+5. عنوان الإنتاج الافتراضي هو `https://jeddah-decor-site.vercel.app`. عند ربط دومين مخصص، أضف متغير البيئة `NEXT_PUBLIC_SITE_URL` بقيمة الدومين مثل `https://yourdomain.com` ثم أعد النشر لتحديث الروابط الأساسية و sitemap والبيانات المنظمة.
+
+تستخدم معاينات Vercel عنوان الإنتاج كرابط أساسي، وتُمنع من الفهرسة عبر `noindex` و`robots.txt`.
 
 ## الصور
 ضع 40 صورة WebP في `public/images` بأسماء `decor01.webp` حتى `decor40.webp`. أماكن الصور تظهر بشكل أنيق دون صور مكسورة قبل إضافة الصور. راجع `public/images/README.txt` للتقسيم.
@@ -29,5 +31,7 @@ npm run dev
 - لا يوجد نموذج لجمع بيانات الزوار أو مفاتيح سرية.
 - لا توجد شهادة تحقق من التشغيل على Vercel قبل إجراء نشر فعلي.
 
-## ملاحظة بشأن التحقق
-تم إجراء فحص ثابت للملفات والمسارات والروابط وأسماء الصور. لم ينجح تنزيل التبعيات داخل بيئة الإعداد بسبب انتهاء المهلة، لذا يلزم تشغيل `npm install && npm run build` في Vercel للتحقق النهائي من البناء.
+## التحقق
+- يكتمل `npm run build` مع توليد الصفحات الثابتة.
+- يمكن فحص الأنواع باستخدام `npx tsc --noEmit`.
+- يتم توليد `robots.txt` و`sitemap.xml` تلقائيًا من ملفات Next.js Route Handlers.
