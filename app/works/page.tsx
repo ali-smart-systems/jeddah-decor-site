@@ -2,5 +2,5 @@ import type {Metadata} from "next";
 import PageView from "../../components/PageView";
 import {pages} from "../../lib/site";
 const page=pages[5];
-export const metadata:Metadata={title:page.title,description:page.lead,alternates:{canonical:"/works"}};
+export const metadata:Metadata={title:page.title,description:page.lead,alternates:{canonical:"/works"},openGraph:{type:"website",locale:"ar_SA",siteName:"معلم ديكورات جدة",title:page.title,description:page.lead,url:"/works"},twitter:{card:"summary",title:page.title,description:page.lead}};
 export default function Page(){return <PageView page={page}/>}
