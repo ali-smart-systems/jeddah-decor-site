@@ -1,0 +1,5 @@
+import Image from "next/image";
+import {imageName} from "../lib/site";
+import fs from "node:fs";
+import path from "node:path";
+export default function Gallery({start,count,title}:{start:number;count:number;title:string}){return <section className="gallery-section shell" id="gallery"><div className="section-kicker">معرض الصور</div><div className="section-title-row"><h2>{title}</h2><p>مساحات مخصصة لصور أعمالك. أضف الصور بأسمائها المحددة وستظهر تلقائيًا.</p></div><div className="gallery-grid">{Array.from({length:count},(_,i)=>start+i).map(n=>{const filename=imageName(n);const exists=fs.existsSync(path.join(process.cwd(),"public","images",filename));return <div className="gallery-card" key={n}>{exists?<Image src={`/images/${filename}`} alt={`${title} - صورة ${n}`} fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" className="gallery-img"/>:<div className="image-placeholder"><span className="placeholder-symbol">✧</span><span>مساحة صورة</span><strong>{filename}</strong></div>}<span className="image-index">{String(n).padStart(2,"0")}</span></div>})}</div></section>}
