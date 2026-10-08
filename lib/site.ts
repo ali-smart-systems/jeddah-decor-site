@@ -1,10 +1,18 @@
+const productionSiteUrl = "https://jeddah-decor-site.vercel.app";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+export const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const siteDomain = isVercelPreview
+  ? productionSiteUrl
+  : new URL(configuredSiteUrl || productionSiteUrl).origin;
+
 export const site = {
   brand: "معلم ديكورات جدة",
   phoneDisplay: "0566004551",
   phoneInternational: "966566004551",
   instagram: "https://www.instagram.com/hmzhly1286",
-  // بعد شراء الدومين ضع عنوانه هنا بدون / في النهاية
-  domain: (process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")).replace(/\/$/, ""),
+  // Use the production URL by default so preview deployments never become canonical.
+  domain: siteDomain,
 };
 export const pages = [
   {slug:"", title:"الرئيسية", heading:"ديكورات تحوّل مساحتك إلى تحفة فنية", lead:"تنفيذ ديكورات داخلية في جدة بذوق عصري وتشطيبات متقنة، من الفكرة حتى اللمسة الأخيرة.", category:"تصاميم مختارة", start:1, count:10, tone:"home"},
