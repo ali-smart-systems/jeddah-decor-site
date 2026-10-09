@@ -15,7 +15,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Cairo', Tahoma, sans-serif;
+    font-family: var(--font-cairo), Tahoma, sans-serif;
     color: var(--ink);
     background: var(--cream)
 }
@@ -164,6 +164,10 @@ a {
     font-size: 13px;
     font-weight: 800;
     letter-spacing: .5px
+}
+
+.section-kicker {
+    color: #88663d
 }
 
 .hero h1 {
@@ -364,7 +368,7 @@ a {
 }
 
 .service-number {
-    color: #bb9866;
+    color: #88663d;
     font-size: 28px;
     font-weight: 900
 }
@@ -380,7 +384,7 @@ a {
 }
 
 .service-link {
-    color: #a47b40;
+    color: #7c5a30;
     font-size: 12px;
     font-weight: 900
 }
@@ -482,6 +486,10 @@ a {
 
 .contact-banner p {
     color: #b6c2c0
+}
+
+.contact-banner .section-kicker {
+    color: var(--gold)
 }
 
 .footer {
